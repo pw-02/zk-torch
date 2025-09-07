@@ -1,1 +1,3 @@
 cargo run --release --bin zk_torch --features fold -- config.yaml
+
+cargo run --release --bin zk_torch --features fold -- tiny_mnist.yaml

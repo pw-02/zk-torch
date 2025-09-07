@@ -3,7 +3,7 @@ onnx:
   model_path: sample.onnx
   input_path: sample.json
 ptau:
-  ptau_path: challenge
+  ptau_path: challenge_0003
   pow_len_log: 7
   loaded_pow_len_log: 7
 sf:
