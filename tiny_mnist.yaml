@@ -4,12 +4,12 @@ onnx:
   input_path: profile_mnist_input.json
 ptau:
   ptau_path: challenge_0003
-  pow_len_log: 17
-  loaded_pow_len_log: 17
+  pow_len_log: 18
+  loaded_pow_len_log: 18
 sf:
   scale_factor_log: 10
-  cq_range_log: 16
-  cq_range_lower_log: 5
+  cq_range_log: 17
+  cq_range_lower_log: 17
 prover:
   model_path: models
   setup_path: setups
