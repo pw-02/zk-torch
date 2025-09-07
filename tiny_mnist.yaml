@@ -1,6 +1,6 @@
 task: tiny_mnist
 onnx:
-  model_path:  mobilenet_v1_1.0_224.onnx
+  model_path: tiny_mnist_fixed.onnx
   input_path: 
 ptau:
   ptau_path: challenge_0003
