@@ -1,7 +1,7 @@
 task: tiny_mnist
 onnx:
-  model_path: profile_mnist_fixed.onnx
-  input_path: profile_mnist_input.json
+  model_path: tiny_mnist_fixed.onnx
+  input_path: tiny_mnist_input.json
 ptau:
   ptau_path: challenge_0003
   pow_len_log: 22
