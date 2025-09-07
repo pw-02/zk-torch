@@ -1,30 +1,43 @@
 import onnxruntime as ort
 import numpy as np
-import onnx
-
-# Load model
-onnx_model = "profile_mnist_fixed.onnx"
-session = ort.InferenceSession(onnx_model, providers=["CPUExecutionProvider"])
-
-# Load input (your profile_mnist_input.json → convert to numpy)
 import json
-with open("profile_mnist_input.json") as f:
-    input_data = json.load(f)
-input_name = session.get_inputs()[0].name
-x = np.array(input_data[input_name], dtype=np.float32)
 
-# Run model and grab all intermediate activations
-from onnxruntime.extensions import get_library_path
-from onnxruntime import InferenceSession
+# ---- Load model + input ----
+onnx_model = "tiny_mnist_fixed.onnx"
+input_json = "tiny_mnist_input.json"
 
-# Enable intermediate outputs
-options = ort.SessionOptions()
-options.enable_profiling = True
+with open(input_json) as f:
+    data = json.load(f)
 
-session = ort.InferenceSession(onnx_model, providers=["CPUExecutionProvider"])
+# Usually the ONNX input name matches the key in JSON
+input_name = list(data.keys())[0]
+x = np.array(data[input_name], dtype=np.float32)
 
-# Run model
-outputs = session.run(None, {input_name: x})
+# ---- Run ONNX with debug node outputs ----
+sess_options = ort.SessionOptions()
+sess_options.enable_profiling = True
 
-# Hook into model graph to inspect intermediates
-# Simple way: re-export ONNX to numpy ops with "onnxruntime.training" or use `onnxruntime-debug-node-output`
+session = ort.InferenceSession(onnx_model, sess_options, providers=["CPUExecutionProvider"])
+
+# Get all node names
+all_nodes = [n.name for n in session.get_outputs()]
+
+# Trick: run model once to get final output
+session.run(None, {input_name: x})
+
+# ---- Dump intermediate outputs ----
+# If you install: pip install onnxruntime-debug-node-output
+# Then you can do:
+from onnxruntime.capi._pybind_state import get_all_node_outputs
+
+node_outputs = get_all_node_outputs(session, {input_name: x})
+
+max_val = 0.0
+for k, v in node_outputs.items():
+    arr = np.array(v)
+    node_max = np.max(np.abs(arr))
+    print(f"{k:30s} min={np.min(arr):.4f}, max={np.max(arr):.4f}")
+    max_val = max(max_val, node_max)
+
+print("\n==== Summary ====")
+print("Maximum absolute activation value:", max_val)
