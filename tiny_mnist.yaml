@@ -1,15 +1,17 @@
 task: tiny_mnist
 onnx:
-  model_path: mnist_classifer.onnx
-  input_path: mnist_classifer_input.json
+  model_path: tiny_mnist_fixed.onnx
+  input_path: tiny_mnist_input.json
 ptau:
   ptau_path: challenge_0003
   pow_len_log: 22
   loaded_pow_len_log: 22
+
 sf:
-  scale_factor_log: 10
-  cq_range_log: 14
-  cq_range_lower_log: 10
+  scale_factor_log: 8        # ×256, plenty precise
+  cq_range_log: 11           # covers ±2048 (scaled max = 581)
+  cq_range_lower_log: 8      # efficient lower bound
+
 prover:
   model_path: models
   setup_path: setups

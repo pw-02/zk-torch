@@ -27,8 +27,8 @@ def format_model_input(input_data_path, expected_shape, input_type, idx=0):
     return reshaped_input
 
 # ---- Load model + input ----
-onnx_model = "mnist_classifer.onnx"
-input_json = "mnist_classifer_input.json"
+onnx_model = "tiny_mnist_fixed.onnx"
+input_json = "tiny_mnist_input.json"
 
 with open(input_json) as f:
     data = json.load(f)
