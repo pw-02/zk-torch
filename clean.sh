@@ -1,3 +1,3 @@
-rm -dr layers_setup
+rm -dr layer_setup
 rm models
 rm setup
