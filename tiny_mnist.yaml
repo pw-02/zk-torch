@@ -10,7 +10,7 @@ ptau:
 sf:
   scale_factor_log: 8        # ×256, plenty precise
   cq_range_log: 6         # covers ±2048 (scaled max = 581)
-  cq_range_lower_log: 5      # efficient lower bound
+  cq_range_lower_log: 1      # efficient lower bound
 
 prover:
   model_path: models
