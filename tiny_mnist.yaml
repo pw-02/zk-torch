@@ -1,0 +1,27 @@
+task: tiny_mnist
+onnx:
+  model_path: profile_mnist_fixed.onnx
+  input_path: profile_mnist_input.json
+ptau:
+  ptau_path: challenge_0003
+  pow_len_log: 17
+  loaded_pow_len_log: 17
+sf:
+  scale_factor_log: 10
+  cq_range_log: 16
+  cq_range_lower_log: 5
+prover:
+  model_path: models
+  setup_path: setups
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs
+  acc_proof_path: acc_proofs
+  final_proof_path: final_proofs
+  enable_layer_setup: true
+verifier:
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs
