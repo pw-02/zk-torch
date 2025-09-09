@@ -1,6 +1,6 @@
 task: bert
 onnx:
-  model_path: model.onnx
+  model_path: bert.onnx
   input_path: 
 ptau:
   ptau_path: challenge_0003
