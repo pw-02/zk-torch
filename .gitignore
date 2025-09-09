@@ -14,3 +14,4 @@ challenge_0003
 buildmodels/bert/model.pytorch
 buildmodels/model.onnx
 
+buildmodels/bert/bert_large_squad.onnx
