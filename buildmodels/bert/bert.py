@@ -122,15 +122,15 @@ def save_to_onnx(model, output_path):
         output_names=["output_start_logits", "output_end_logits"],
         opset_version=14,
         do_constant_folding=True,
-        dynamic_axes=(
-            {
-                "input_ids": {0: "batch_size"},
-                "input_mask": {0: "batch_size"},
-                "segment_ids": {0: "batch_size"},
-                "output_start_logits": {0: "batch_size"},
-                "output_end_logits": {0: "batch_size"},
-            }
-        ),
+        # dynamic_axes=(
+        #     {
+        #         "input_ids": {0: "batch_size"},
+        #         "input_mask": {0: "batch_size"},
+        #         "segment_ids": {0: "batch_size"},
+        #         "output_start_logits": {0: "batch_size"},
+        #         "output_end_logits": {0: "batch_size"},
+        #     }
+        # ),
     )
 
 def main():
@@ -154,12 +154,12 @@ def main():
     # Save as ONNX
     save_to_onnx(model, os.path.join(output_dir, "tiny_bert.onnx"))
 
-    # Load the original model
-    model = onnx.load(os.path.join(output_dir, "tiny_bert.onnx"))
-    # Apply the pattern replacement
-    model = replace_reshape_transpose(model)
+    # # Load the original model
+    # model = onnx.load(os.path.join(output_dir, "tiny_bert.onnx"))
+    # # Apply the pattern replacement
+    # model = replace_reshape_transpose(model)
 
-    onnx.save(model, os.path.join(output_dir, 'tiny_bert.onnx'))
+    # onnx.save(model, os.path.join(output_dir, 'tiny_bert.onnx'))
 
 if __name__ == "__main__":
     main()
