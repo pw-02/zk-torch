@@ -120,7 +120,7 @@ def save_to_onnx(model, output_path):
         verbose=True,
         input_names=["input_ids", "input_mask", "segment_ids"],
         output_names=["output_start_logits", "output_end_logits"],
-        opset_version=14,
+        opset_version=11,
         # do_constant_folding=True,
         # dynamic_axes=(
         #     {
@@ -140,8 +140,9 @@ def main():
 
     # Load directly from Hugging Face instead of TF checkpoint
     model = BertForQuestionAnswering.from_pretrained(
-        "google/bert_uncased_L-2_H-128_A-2"
+        "bert-base-uncased"
     )
+    #uncased_L-2_H-128_A-2
 
     # Save config.json for reference (like TF one)
     config_path = os.path.join(output_dir, "bert_config.json")
