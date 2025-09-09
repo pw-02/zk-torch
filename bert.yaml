@@ -11,7 +11,7 @@ ptau:
 sf:
   scale_factor_log: 10       
   cq_range_log: 22     
-  cq_range_lower_log: 22
+  cq_range_lower_log: 21
 
 prover:
   model_path: models
