@@ -9,9 +9,9 @@ ptau:
   loaded_pow_len_log: 22
 
 sf:
-  scale_factor_log: 6        # ×256, plenty precise
-  cq_range_log: 21       # covers ±2048 (scaled max = 581)
-  cq_range_lower_log: 1      # efficient lower bound
+  scale_factor_log: 8        
+  cq_range_log: 19      
+  cq_range_lower_log: 1     
 
 prover:
   model_path: models
