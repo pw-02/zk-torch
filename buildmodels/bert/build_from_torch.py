@@ -43,7 +43,7 @@ model = replace_reshape_transpose(model)
 #onnx.checker.check_model(model)
 
 # Save the modified model
-onnx.save(model, 'bert_fixed.onnx')
+onnx.save(model, output_onnx)
 
 
 
