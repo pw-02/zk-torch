@@ -1,16 +1,18 @@
 task: bert
 onnx:
-  model_path: buildmodels/bert/bert_fixed.onnx
+  model_path: sample.onnx
   # model_path: bert_fixed.onnx --- IGNORE ---
   input_path: 
 ptau:
-  ptau_path: challenge
-  pow_len_log: 7
-  loaded_pow_len_log: 7
+  ptau_path: challenge_0003
+  pow_len_log: 22
+  loaded_pow_len_log: 22
+
 sf:
-  scale_factor_log: 3
-  cq_range_log: 6
-  cq_range_lower_log: 5
+  scale_factor_log: 10       
+  cq_range_log: 16       
+  cq_range_lower_log: 4   
+
 prover:
   model_path: models
   setup_path: setups
