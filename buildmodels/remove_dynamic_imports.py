@@ -1,16 +1,15 @@
 import onnx
 
 # Load model
-model = onnx.load("buildmodels/bert/tiny_bert.onnx")
+path = "buildmodels/resnet50/resnet50_v1.onnx"
+model = onnx.load(path)
 
 # Edit input shapes
-for input_tensor in model.graph.input:
-    for dim in input_tensor.type.tensor_type.shape.dim:
-        if dim.dim_param:  # dynamic dimension like "batch_size"
-            if dim.dim_param == "batch_size":
-                dim.dim_value = 1
-            elif dim.dim_param == "sequence":
-                dim.dim_value = 384
+for inp in model.graph.input:
+    for d in inp.type.tensor_type.shape.dim:
+        if d.dim_param:  # symbolic name found
+            d.dim_param = ""   # clear it
+            d.dim_value = 1    # set fixed size (e.g. 1)
 
 # Save back
-onnx.save(model, "buildmodels/bert/tiny_bert.onnx")
+onnx.save(model, "buildmodels/resnet50/resnet50_v1.onnx")
