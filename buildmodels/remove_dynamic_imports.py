@@ -1,7 +1,7 @@
 import onnx
 
 # Load model
-model = onnx.load("buildmodels/bert/tinybert.onnx")
+model = onnx.load("buildmodels/bert/tiny_bert.onnx")
 
 # Edit input shapes
 for input_tensor in model.graph.input:
@@ -13,4 +13,4 @@ for input_tensor in model.graph.input:
                 dim.dim_value = 384
 
 # Save back
-onnx.save(model, "buildmodels/bert/tinybert.onnx")
+onnx.save(model, "buildmodels/bert/tiny_bert.onnx")

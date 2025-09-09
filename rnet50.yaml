@@ -1,0 +1,30 @@
+task: rnet50
+onnx:
+  model_path: buildmodels/rnet50/nano_rnet50_4_layers_64_embd.onnx
+  # model_path: bert_fixed.onnx --- IGNORE ---
+  input_path: 
+ptau:
+  ptau_path: challenge_0003
+  pow_len_log: 22
+  loaded_pow_len_log: 22
+
+sf:
+  scale_factor_log: 8        # ×256, plenty precise
+  cq_range_log: 21       # covers ±2048 (scaled max = 581)
+  cq_range_lower_log: 7      # efficient lower bound
+
+prover:
+  model_path: models
+  setup_path: setups
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs
+  acc_proof_path: acc_proofs
+  final_proof_path: final_proofs
+  enable_layer_setup: true
+verifier:
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs

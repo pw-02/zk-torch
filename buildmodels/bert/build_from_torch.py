@@ -134,7 +134,7 @@ def save_to_onnx(model):
 
 
 def main():
-    with open("buildmodels/bert/uncased_L-2_H-128_A-2/bert_config.json") as f:
+    with open("buildmodels/bert/bert_config.json") as f:
         config_json = json.load(f)
 
     config = BertConfig(
@@ -152,10 +152,10 @@ def main():
     )
 
     model = load_from_tf(
-        config, "buildmodels/bert/uncased_L-2_H-128_A-2"
+        config, "build/data/bert_tf_v1_1_large_fp32_384_v2/model.ckpt-5474"
     )
     torch.save(
-        model.state_dict(), "buildmodels/bert/uncased_L-2_H-128_A-2/model.pytorch"
+        model.state_dict(), "build/data/bert_tf_v1_1_large_fp32_384_v2/model.pytorch"
     )
     save_to_onnx(model)
 
