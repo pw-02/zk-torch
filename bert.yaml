@@ -10,7 +10,7 @@ ptau:
 
 sf:
   scale_factor_log: 10       
-  cq_range_log: 10     
+  cq_range_log: 12     
   cq_range_lower_log: 8    
 
 prover:

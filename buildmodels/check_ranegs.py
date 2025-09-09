@@ -40,6 +40,6 @@ def check_ranges(model_path, scale_factor_log=8):
 
 if __name__ == "__main__":
     model_path = "buildmodels/bert/bert_fixed.onnx"
-    scale_factor_log = 8
+    scale_factor_log = 10
 
     check_ranges(model_path, scale_factor_log)
