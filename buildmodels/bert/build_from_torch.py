@@ -10,30 +10,22 @@ model = AutoModel.from_pretrained(model_name, attn_implementation="eager")  # ðŸ
 model.eval()
 
 # 2. Create fixed dummy input
-batch_size = 1
-sequence_length = 16
-dummy_input = tokenizer(
-    ["Hello world!"],
-    padding="max_length",
-    truncation=True,
-    max_length=sequence_length,
-    return_tensors="pt"
-)
-
+dummy_input = torch.ones((1, 384), dtype=torch.int64)
+output_onnx = "buildmodels/bert/bert_fixed.onnx"
 # 3. Export to ONNX
 torch.onnx.export(
     model,
-    (dummy_input["input_ids"], dummy_input["attention_mask"]),
-    "bert_fixed.onnx",
-    input_names=["input_ids", "attention_mask"],
-    output_names=["last_hidden_state"],  # pooler_output only if present
+    (dummy_input, dummy_input, dummy_input),  # input_ids, attention_mask, token_type_ids
+    output_onnx,
+    input_names=["input_ids", "input_mask", "segment_ids"], 
+     output_names=["output_start_logits", "output_end_logits"],
     dynamic_axes=None,   # ðŸš« no symbolic dims
     opset_version=11     # now works, because no SDPA op
 )
 
 
 # Load the original model
-model = onnx.load('bert_fixed.onnx')
+model = onnx.load(output_onnx)
 
 # Apply the pattern replacement
 model = replace_reshape_transpose(model)
@@ -42,10 +34,6 @@ model = replace_reshape_transpose(model)
 #onnx.checker.check_model(model)
 
 # Save the modified model
-onnx.save(model, 'bert_fixed.onnx')
-
-
-
-
+onnx.save(model, output_onnx)
 
 print("ONNX model saved as bert_fixed.onnx")

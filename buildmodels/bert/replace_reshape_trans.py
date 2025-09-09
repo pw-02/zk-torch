@@ -99,15 +99,3 @@ def replace_reshape_transpose(model):
     #model = shape_inference.infer_shapes(model)
 
     return model
-
-# Load the original model
-model = onnx.load('buildmodels/bert/bert_fixed.onnx')
-
-# Apply the pattern replacement
-model = replace_reshape_transpose(model)
-
-# Check the model for correctness
-#onnx.checker.check_model(model)
-
-# Save the modified model
-onnx.save(model, 'buildmodels/bert/bert_fixed.onnx')
