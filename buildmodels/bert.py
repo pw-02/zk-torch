@@ -121,15 +121,15 @@ def save_to_onnx(model):
         input_names=["input_ids", "input_mask", "segment_ids"],
         output_names=["output_start_logits", "output_end_logits"],
         opset_version=11,
-        dynamic_axes=(
-            {
-                "input_ids": {0: "batch_size"},
-                "input_mask": {0: "batch_size"},
-                "segment_ids": {0: "batch_size"},
-                "output_start_logits": {0: "batch_size"},
-                "output_end_logits": {0: "batch_size"},
-            }
-        ),
+        # dynamic_axes=(
+        #     {
+        #         "input_ids": {0: "batch_size"},
+        #         "input_mask": {0: "batch_size"},
+        #         "segment_ids": {0: "batch_size"},
+        #         "output_start_logits": {0: "batch_size"},
+        #         "output_end_logits": {0: "batch_size"},
+        #     }
+        # ),
     )
 
 
