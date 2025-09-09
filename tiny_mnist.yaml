@@ -1,6 +1,6 @@
 task: tiny_mnist
 onnx:
-  model_path: resnet50_v1.onnx
+  model_path: buildmodels/mnist/tiny_mnist.onnx
   input_path: 
 ptau:
   ptau_path: challenge_0003
