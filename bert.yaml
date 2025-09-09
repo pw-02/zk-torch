@@ -9,7 +9,7 @@ ptau:
   loaded_pow_len_log: 22
 
 sf:
-  scale_factor_log: 5       
+  scale_factor_log: 3       
   cq_range_log: 22     
   cq_range_lower_log: 21
 

@@ -2,4 +2,6 @@ cargo run --release --bin zk_torch --features fold -- config.yaml
 
 cargo run --release --bin zk_torch --features fold -- tiny_mnist.yaml
 
+cargo run --release --bin zk_torch --features fold -- bert.yaml
+
 cargo run --release --bin zk_torch --features mock_prove,fold -- bert.yaml
