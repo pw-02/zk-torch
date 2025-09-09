@@ -1,6 +1,6 @@
 task: rnet50
 onnx:
-  model_path: buildmodels/rnet50/nano_rnet50_4_layers_64_embd.onnx
+  model_path: buildmodels/rnet50/resnet50_v1.onnx
   # model_path: bert_fixed.onnx --- IGNORE ---
   input_path: 
 ptau:
