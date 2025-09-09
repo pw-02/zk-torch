@@ -1,6 +1,6 @@
 task: bert
 onnx:
-  model_path: buildmodels/bert/bert_tiny_fixed.onnx
+  model_path: buildmodels/bert/bert_fixed.onnx
   # model_path: bert_fixed.onnx --- IGNORE ---
   input_path: 
 ptau:
