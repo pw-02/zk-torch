@@ -1,5 +1,7 @@
 import torch
 from transformers import AutoModel, AutoTokenizer
+import onnx 
+from replace_reshape_trans import replace_reshape_transpose
 
 # 1. Load model with standard attention
 model_name = "google/bert_uncased_L-2_H-128_A-2"
@@ -28,5 +30,22 @@ torch.onnx.export(
     dynamic_axes=None,   # 🚫 no symbolic dims
     opset_version=11     # now works, because no SDPA op
 )
+
+
+# Load the original model
+model = onnx.load('bert_fixed.onnx')
+
+# Apply the pattern replacement
+model = replace_reshape_transpose(model)
+
+# Check the model for correctness
+#onnx.checker.check_model(model)
+
+# Save the modified model
+onnx.save(model, 'bert_fixed.onnx')
+
+
+
+
 
 print("ONNX model saved as bert_fixed.onnx")
