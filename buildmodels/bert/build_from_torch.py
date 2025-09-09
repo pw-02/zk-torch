@@ -6,7 +6,7 @@ model_name = "bert-large-uncased-whole-word-masking-finetuned-squad"
 
 # Load pretrained model + tokenizer
 tokenizer = BertTokenizer.from_pretrained(model_name)
-model = BertForQuestionAnswering.from_pretrained(model_name)
+model = BertForQuestionAnswering.from_pretrained(model_name,attn_implementation="eager")
 model.eval()
 
 # Fixed MLPerf benchmark input: seq_len=384, batch_size=1
@@ -29,7 +29,7 @@ torch.onnx.export(
     "buildmodels/bert/bert_large_squad.onnx",
     input_names=["input_ids", "attention_mask", "token_type_ids"],
     output_names=["start_logits", "end_logits"],
-    opset_version=14,
+    opset_version=11,
     dynamic_axes=None   # 🚫 no dynamic axes (fixed shape 1x384)
 )
 
