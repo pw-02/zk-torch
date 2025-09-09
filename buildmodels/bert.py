@@ -159,7 +159,7 @@ def main():
     # Apply the pattern replacement
     model = replace_reshape_transpose(model)
 
-    onnx.save(model, os.path.join(output_dir, 'tiny_bert_replaced.onnx'))
+    onnx.save(model, os.path.join(output_dir, 'tiny_bert.onnx'))
 
 if __name__ == "__main__":
     main()
