@@ -1,7 +1,7 @@
 task: sample
 onnx:
   model_path: sample.onnx
-  input_path: sample.json
+  input_path: 
 ptau:
   ptau_path: challenge
   pow_len_log: 7
