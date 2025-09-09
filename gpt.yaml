@@ -1,4 +1,4 @@
-task: bert
+task: gpt
 onnx:
   model_path: buildmodels\gpt\nano_gpt_2_layers_8_embd.onnx
   # model_path: bert_fixed.onnx --- IGNORE ---
