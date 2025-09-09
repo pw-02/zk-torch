@@ -9,9 +9,9 @@ ptau:
   loaded_pow_len_log: 22
 
 sf:
-  scale_factor_log: 10       
-  cq_range_log: 16       
-  cq_range_lower_log: 4   
+  scale_factor_log: 3       
+  cq_range_log: 6      
+  cq_range_lower_log: 5 
 
 prover:
   model_path: models
