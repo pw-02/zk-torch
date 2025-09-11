@@ -26,11 +26,11 @@ inputs = (dummy_input["input_ids"], dummy_input["attention_mask"], dummy_input["
 torch.onnx.export(
     model,
     inputs,
-    "buildmodels/bert/bert_tiny_squad.onnx",
+    "buildmodels/bert/bert_tiny.onnx",
     input_names=["input_ids", "attention_mask", "token_type_ids"],
     output_names=["start_logits", "end_logits"],
     opset_version=11,
     dynamic_axes=None   # 🚫 no dynamic axes (fixed shape 1x384)
 )
 
-print("Exported ONNX model: bert_tiny_squad.onnx")
+print("Exported ONNX model: bert_tiny.onnx")
