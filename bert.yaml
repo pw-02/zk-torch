@@ -10,7 +10,7 @@ ptau:
 
 sf:
   scale_factor_log: 3       
-  cq_range_log: 22     
+  cq_range_log: 21     
   cq_range_lower_log: 21
 
 prover:

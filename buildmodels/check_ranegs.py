@@ -9,12 +9,16 @@ def check_ranges(model_path, scale_factor_log=8):
     model = onnx.load(model_path)
 
     min_val, max_val = float("inf"), float("-inf")
+    unscaled_max_abs = 0.0
 
     for init in model.graph.initializer:
         arr = np.frombuffer(init.raw_data, dtype=np.float32).reshape(init.dims)
+        unscaled_max_abs = max(unscaled_max_abs, float(np.abs(arr).max()))
         qarr = arr * scale
         min_val = min(min_val, float(qarr.min()))
         max_val = max(max_val, float(qarr.max()))
+
+    print(f"Unscaled Max Absolute Value: {unscaled_max_abs:.3f}")
 
     print(f"Scale factor log: {scale_factor_log} (scale={scale})")
     print(f"Scaled value range: {min_val:.3f} .. {max_val:.3f}")
@@ -39,7 +43,7 @@ def check_ranges(model_path, scale_factor_log=8):
         print("All values are zero, lower bound can stay at 0.")
 
 if __name__ == "__main__":
-    model_path = "buildmodels/bert/bert_fixed.onnx"
-    scale_factor_log = 10
+    model_path = "sample.onnx"
+    scale_factor_log = 3
 
     check_ranges(model_path, scale_factor_log)

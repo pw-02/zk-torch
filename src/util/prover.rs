@@ -274,6 +274,9 @@ pub fn zktorch_kernel() {
     println!("CQ Error: {:?}", outputs.err().unwrap());
     return;
   }
+  else {
+    println!("Witness generation successful");
+  }
 
   #[cfg(not(feature = "mock_prove"))]
   setup(&srs, &graph, &models, &mut timing);
