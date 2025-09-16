@@ -1,16 +1,17 @@
-task: tiny_mnist
+task: bert
 onnx:
   model_path: buildmodels/tinymnist/tiny_mnist.onnx
+  # model_path: bert_fixed.onnx --- IGNORE ---
   input_path: 
 ptau:
   ptau_path: challenge_0003
   pow_len_log: 22
-  loaded_pow_len_log: 22
+  loaded_pow_len_log: 20
 
 sf:
-  scale_factor_log: 8        # ×256, plenty precise
-  cq_range_log: 10       # covers ±2048 (scaled max = 581)
-  cq_range_lower_log: 7      # efficient lower bound
+  scale_factor_log: 3       
+  cq_range_log: 20
+  cq_range_lower_log: 19
 
 prover:
   model_path: models
