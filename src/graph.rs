@@ -122,51 +122,96 @@ impl Graph {
     return outputsEnc;
   }
 
-  pub fn setup(&self, srs: &SRS, models: &Vec<&ArrayD<Data>>) -> Vec<(Vec<G1Projective>, Vec<G2Projective>, Vec<DensePolynomial<Fr>>)> {
+pub fn setup(
+    &self,
+    srs: &SRS,
+    models: &Vec<&ArrayD<Data>>
+) -> Vec<(Vec<G1Projective>, Vec<G2Projective>, Vec<DensePolynomial<Fr>>)> {
+    println!("[graph::setup] entered setup()");
+
     assert!(self.basic_blocks.len() == self.precomputable.setup.len());
-    self
-      .basic_blocks
-      .iter()
-      .zip(models.iter())
-      .enumerate()
-      .map(|(i, (b, m))| {
-        let precomputable = self.precomputable.setup[i];
-        if precomputable {
-          // Skip setup for some basicblocks if they are precomputable.
-          // These basicblocks require no proving and verifying since they are not used in any layer that needs proving and verifying.
-          println!(
-            "skipping setup for {:?} {:?} because the basicblock is not used in any layer that needs proving and verifying",
-            i, b
-          );
-          return (vec![], vec![], vec![]);
-        }
-        println!("setting up {:?} {:?}", i, b);
-        let bb_name = format!("{b:?}");
-        let save_cq_layer_setup = CONFIG.prover.enable_layer_setup && (bb_name.contains("CQ2BasicBlock") || bb_name.contains("CQBasicBlock"));
-        #[cfg(not(feature = "mock_prove"))]
-        if save_cq_layer_setup {
-          let file_name = format!("{}.setup", util::hash_str(&format!("{bb_name:?}")));
-          let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
-          if util::file_exists(&file_path) {
-            println!("CQ setup exists: Loading layer setup from file: {}", file_path);
-            let setups =
-              Vec::<(Vec<G1Projective>, Vec<G2Projective>, Vec<DensePolynomial<Fr>>)>::deserialize_uncompressed(File::open(&file_path).unwrap())
-                .unwrap();
-            return setups.first().unwrap().clone();
-          }
-        }
-        let setup = b.setup(srs, *m);
-        let setups = vec![setup];
-        #[cfg(not(feature = "mock_prove"))]
-        if save_cq_layer_setup {
-          let file_name = format!("{}.setup", util::hash_str(&format!("{bb_name:?}")));
-          let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
-          setups.serialize_uncompressed(File::create(file_path).unwrap()).unwrap();
-        }
-        return setups.first().unwrap().clone();
-      })
-      .collect()
-  }
+    println!(
+        "[graph::setup] number of basic_blocks = {}, number of precomputables = {}",
+        self.basic_blocks.len(),
+        self.precomputable.setup.len()
+    );
+
+    self.basic_blocks
+        .iter()
+        .zip(models.iter())
+        .enumerate()
+        .map(|(i, (b, m))| {
+            println!("[graph::setup] processing basic block {i}: {b:?}");
+            let precomputable = self.precomputable.setup[i];
+
+            if precomputable {
+                // Skip setup for precomputable blocks
+                println!(
+                    "[graph::setup] skipping setup for block {i}: {b:?} \
+                     (not used in proving/verifying)"
+                );
+                return (vec![], vec![], vec![]);
+            }
+
+            println!("[graph::setup] setting up block {i}: {b:?}");
+            let bb_name = format!("{b:?}");
+
+            let save_cq_layer_setup = CONFIG.prover.enable_layer_setup
+                && (bb_name.contains("CQ2BasicBlock") || bb_name.contains("CQBasicBlock"));
+            if save_cq_layer_setup {
+                println!(
+                    "[graph::setup] CQ block detected at {i}: {bb_name} \
+                     (layer setup caching enabled)"
+                );
+            }
+
+            #[cfg(not(feature = "mock_prove"))]
+            if save_cq_layer_setup {
+                let file_name = format!("{}.setup", util::hash_str(&format!("{bb_name:?}")));
+                let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
+                if util::file_exists(&file_path) {
+                    println!(
+                        "[graph::setup] cache hit → loading CQ setup for block {i} from {}",
+                        file_path
+                    );
+                    let setups = Vec::<(
+                        Vec<G1Projective>,
+                        Vec<G2Projective>,
+                        Vec<DensePolynomial<Fr>>
+                    )>::deserialize_uncompressed(File::open(&file_path).unwrap()).unwrap();
+                    println!(
+                        "[graph::setup] successfully loaded CQ setup for block {i}: {bb_name}"
+                    );
+                    return setups.first().unwrap().clone();
+                }
+            }
+
+            println!("[graph::setup] running setup() on block {i}");
+            let setup = b.setup(srs, *m);
+            let setups = vec![setup];
+            println!("[graph::setup] finished setup() for block {i}");
+
+            #[cfg(not(feature = "mock_prove"))]
+            if save_cq_layer_setup {
+                let file_name = format!("{}.setup", util::hash_str(&format!("{bb_name:?}")));
+                let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
+                println!(
+                    "[graph::setup] saving CQ setup for block {i} to {}",
+                    file_path
+                );
+                setups
+                    .serialize_uncompressed(File::create(&file_path).unwrap())
+                    .unwrap();
+                println!(
+                    "[graph::setup] successfully wrote CQ setup for block {i}"
+                );
+            }
+
+            setups.first().unwrap().clone()
+        })
+        .collect()
+}
+
 
   #[cfg(not(feature = "fold"))]
   pub fn prove(
