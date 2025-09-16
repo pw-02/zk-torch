@@ -19,6 +19,7 @@ use rayon::range;
 use sha3::{Digest, Keccak256};
 use std::fs::{self, File};
 use std::io::Read;
+use std::time::Instant;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum CQArrayType {
@@ -271,6 +272,8 @@ pub fn zktorch_kernel() {
   // Timing
   let mut timing = TimingTree::default();
   env_logger::init();
+  let start_total = Instant::now();
+
 
   let srs = &ptau::load_file(&CONFIG.ptau.ptau_path, CONFIG.ptau.pow_len_log, CONFIG.ptau.loaded_pow_len_log);
   let onnx_file_name = &CONFIG.onnx.model_path;
@@ -332,4 +335,5 @@ pub fn zktorch_kernel() {
   measure_file_size(&CONFIG.prover.final_proof_path);
   timing.print();
   println!("Cargo run was successful.");
+  println!("Total time: {:?}", start_total.elapsed());
 }
