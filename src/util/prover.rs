@@ -191,31 +191,45 @@ pub fn prove(
 
 #[cfg(not(feature = "mock_prove"))]
 pub fn setup(srs: &SRS, graph: &Graph, models: &Vec<&ArrayD<Fr>>, timing: &mut TimingTree) {
-  // Setup:
-  let models: Vec<ArrayD<Data>> = models
-    .par_iter()
-    .enumerate()
-    .map(|(i, model)| {
-      let bb = &graph.basic_blocks[i];
-      let bb_name = format!("{bb:?}");
-      let file_name = format!("{}.model", util::hash_str(&format!("{bb_name:?}")));
-      let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
-      if util::file_exists(&file_path) {
-        println!("CQs: Loading layer model from file: {}", file_path);
-        let mut modelBytes = Vec::new();
-        File::open(file_path).unwrap().read_to_end(&mut modelBytes).unwrap();
-        let model: ArrayD<Data> = bincode::deserialize(&modelBytes).unwrap();
-        model
-      } else {
-        let model = convert_to_data(srs, model);
-        if bb_name.contains("CQ2BasicBlock") || bb_name.contains("CQBasicBlock") {
-          let modelBytes = bincode::serialize(&model).unwrap();
-          fs::write(file_path, &modelBytes).unwrap();
-        }
-        model
-      }
-    })
-    .collect();
+    println!("[setup] entered setup() function");
+
+    // Setup:
+    let models: Vec<ArrayD<Data>> = models
+        .par_iter()
+        .enumerate()
+        .map(|(i, model)| {
+            let bb = &graph.basic_blocks[i];
+            let bb_name = format!("{bb:?}");
+            println!("[setup] processing basic block {i}: {bb_name}");
+
+            let file_name = format!("{}.model", util::hash_str(&format!("{bb_name:?}")));
+            let file_path = format!("{}/{}", *LAYER_SETUP_DIR, file_name);
+            println!("[setup] generated file path: {}", file_path);
+
+            if util::file_exists(&file_path) {
+                println!("[setup] cache hit → loading model from {}", file_path);
+                let mut model_bytes = Vec::new();
+                File::open(&file_path).unwrap().read_to_end(&mut model_bytes).unwrap();
+                let model: ArrayD<Data> = bincode::deserialize(&model_bytes).unwrap();
+                println!("[setup] successfully deserialized model for block {i}");
+                model
+            } else {
+                println!("[setup] cache miss → converting to Data for block {i}");
+                let model = convert_to_data(srs, model);
+                println!("[setup] finished convert_to_data for block {i}");
+
+                if bb_name.contains("CQ2BasicBlock") || bb_name.contains("CQBasicBlock") {
+                    println!("[setup] block {i} is CQ-related → saving to cache file {}", file_path);
+                    let model_bytes = bincode::serialize(&model).unwrap();
+                    fs::write(&file_path, &model_bytes).unwrap();
+                    println!("[setup] wrote model {i} to {}", file_path);
+                }
+
+                model
+            }
+        })
+        .collect();
+
 
   let models_ref: Vec<&ArrayD<Data>> = models.iter().map(|model| model).collect();
   let setups = timed!(timing, "setup and encode models", graph.setup(srs, &models_ref));
