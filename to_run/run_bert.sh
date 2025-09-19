@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./clean.sh
-cargo run --release --bin zk_torch --features fold -- bert.yaml &
+cargo run --release --bin zk_torch --features fold, mock_prove -- bert.yaml &
 PID=$!  
 
 LOGFILE="memory_log_$(date +%Y%m%d_%H%M%S).txt"
