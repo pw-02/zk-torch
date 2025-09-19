@@ -1,15 +1,15 @@
 task: sample
 onnx:
   model_path: sample.onnx
-  input_path: 
+  input_path: sample.json
 ptau:
-  ptau_path: challenge_0003
-  pow_len_log: 22
+  ptau_path: challenge
+  pow_len_log: 7
   loaded_pow_len_log: 7
 sf:
   scale_factor_log: 3
   cq_range_log: 6
-  cq_range_lower_log: 4
+  cq_range_lower_log: 5
 prover:
   model_path: models
   setup_path: setups
