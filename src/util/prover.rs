@@ -274,8 +274,13 @@ pub fn zktorch_kernel() {
   env_logger::init();
   let start_total = Instant::now();
 
-
   let srs = &ptau::load_file(&CONFIG.ptau.ptau_path, CONFIG.ptau.pow_len_log, CONFIG.ptau.loaded_pow_len_log);
+  
+  let load_srs_time = Instant::now().duration_since(start_total);
+  println!("Loaded ptau file in {:?}", load_srs_time);
+
+  let start_witness_gen = Instant::now();
+
   let onnx_file_name = &CONFIG.onnx.model_path;
   let (mut graph, models) = onnx::load_file(onnx_file_name);
   let input_path = &CONFIG.onnx.input_path;
@@ -293,7 +298,10 @@ pub fn zktorch_kernel() {
   }
   else {
     println!("Witness generation successful");
+
   }
+  let witness_gen_time = Instant::now().duration_since(start_witness_gen);
+  println!("Witness generation took  {:?}", witness_gen_time);
 
   #[cfg(not(feature = "mock_prove"))]
   setup(&srs, &graph, &models, &mut timing);
@@ -302,6 +310,11 @@ pub fn zktorch_kernel() {
 
   // Load model and setup:
   #[cfg(not(feature = "mock_prove"))]
+  
+  
+  let start_setup = Instant::now();
+
+
   let setups =
     Vec::<(Vec<G1Projective>, Vec<G2Projective>, Vec<DensePolynomial<Fr>>)>::deserialize_uncompressed(File::open(&CONFIG.prover.setup_path).unwrap())
       .unwrap();
@@ -320,17 +333,34 @@ pub fn zktorch_kernel() {
   let models = load_model();
   let models: Vec<&ArrayD<Data>> = models.iter().map(|model| model).collect();
 
+  let setup_time = Instant::now().duration_since(start_setup);
+  println!("setup took {:?}", setup_time);
+
+  let start_prove = Instant::now();
   // Prove
   prove(&srs, &inputs, outputs.unwrap(), setups, models, &mut graph, &mut timing);
-
+  let prove_time = Instant::now().duration_since(start_prove);
+  println!("proving took {:?}", prove_time);
+  
+  let start_verify = Instant::now();
   // Verify
   verify(&srs, &graph, &mut timing);
+  let verify_time = Instant::now().duration_since(start_verify);
+  println!("Verification took {:?}", verify_time);
 
   // Measure proof size
   measure_file_size(&CONFIG.prover.enc_model_path);
   measure_file_size(&CONFIG.prover.enc_input_path);
   measure_file_size(&CONFIG.prover.enc_output_path);
   measure_file_size(&CONFIG.prover.proof_path);
+  //print all the timing info for each step
+  println!("Timing information:");
+  println!("Loaded ptau file in {:?}", load_srs_time);
+  println!("Witness generation completed in {:?}", witness_gen_time);
+  println!("Finished setup in {:?}", setup_time);
+  println!("Proving completed in {:?}", prove_time);
+  println!("Verification completed in {:?}", verify_time);
+
   #[cfg(feature = "fold")]
   measure_file_size(&CONFIG.prover.final_proof_path);
   timing.print();
