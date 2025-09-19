@@ -8,3 +8,9 @@ cargo run --release --bin zk_torch --features fold -- bert.yaml
 
 
 cargo run --release --bin zk_torch --features mock_prove,fold -- bert.yaml
+
+
+aws s3 cp s3://dzkml/setup/challenge_0003 ./challenge_0003
+aws s3 cp s3://dzkml/onnxmodels/bert_large_squad.onnx ./bert_large_squad.onnx
+
+aws s3 cp bert_large_squad.onnx s3://dzkml/onnxmodels/bert_large_squad.onnx
