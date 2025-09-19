@@ -302,19 +302,19 @@ pub fn zktorch_kernel() {
   }
   let witness_gen_time = Instant::now().duration_since(start_witness_gen);
   println!("Witness generation took  {:?}", witness_gen_time);
-
+  
+  let start_setup = Instant::now();
   #[cfg(not(feature = "mock_prove"))]
   setup(&srs, &graph, &models, &mut timing);
   #[cfg(feature = "mock_prove")]
   let (setups, models) = setup(&srs, &graph, &models, &mut timing);
-
   // Load model and setup:
+  
+  let setup_time = Instant::now().duration_since(start_setup);
+  println!("setup took {:?}", setup_time);
+
   #[cfg(not(feature = "mock_prove"))]
   
-  
-  let start_setup = Instant::now();
-
-
   let setups =
     Vec::<(Vec<G1Projective>, Vec<G2Projective>, Vec<DensePolynomial<Fr>>)>::deserialize_uncompressed(File::open(&CONFIG.prover.setup_path).unwrap())
       .unwrap();
@@ -333,8 +333,7 @@ pub fn zktorch_kernel() {
   let models = load_model();
   let models: Vec<&ArrayD<Data>> = models.iter().map(|model| model).collect();
 
-  let setup_time = Instant::now().duration_since(start_setup);
-  println!("setup took {:?}", setup_time);
+
 
   let start_prove = Instant::now();
   // Prove
