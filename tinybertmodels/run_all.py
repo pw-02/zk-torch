@@ -32,7 +32,7 @@ with open(log_file, "w") as log:
             yaml_path = os.path.join(yaml_dir, file)
             cmd = [
                 "cargo", "run", "--release", "--bin", "zk_torch",
-                "--features", "fold", "--", yaml_path
+                "--features", "mock_prove", "fold", "--", yaml_path
             ]
 
             print(f"🚀 Running: {' '.join(cmd)}")
