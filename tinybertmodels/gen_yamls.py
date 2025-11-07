@@ -32,21 +32,21 @@ for file in os.listdir(models_dir):
                 "cq_range_lower_log": 19
             },
             "prover": {
-                "model_path": "models",
-                "setup_path": "setups",
-                "enc_model_path": "modelsEnc",
-                "enc_input_path": "inputsEnc",
-                "enc_output_path": "outputsEnc",
-                "proof_path": "proofs",
-                "acc_proof_path": "acc_proofs",
-                "final_proof_path": "final_proofs",
+                "model_path": f"{model_name}_models",
+                "setup_path": f"{model_name}_setups",
+                "enc_model_path": f"{model_name}_modelsEnc",
+                "enc_input_path": f"{model_name}_inputsEnc",
+                "enc_output_path": f"{model_name}_outputsEnc",
+                "proof_path": f"{model_name}_proofs",
+                "acc_proof_path": f"{model_name}_acc_proofs",
+                "final_proof_path": f"{model_name}_final_proofs",
                 "enable_layer_setup": True
             },
             "verifier": {
-                "enc_model_path": "modelsEnc",
-                "enc_input_path": "inputsEnc",
-                "enc_output_path": "outputsEnc",
-                "proof_path": "proofs"
+                "enc_model_path": f"{model_name}_modelsEnc",
+                "enc_input_path": f"{model_name}_inputsEnc",
+                "enc_output_path": f"{model_name}_outputsEnc",
+                "proof_path": f"{model_name}_proofs"
             }
         }
 
