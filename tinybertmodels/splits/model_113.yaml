@@ -1,0 +1,27 @@
+task: model_113
+onnx:
+  model_path: buildmodels\bert\model_113.onnx
+  input_path: ''
+ptau:
+  ptau_path: challenge_0003
+  pow_len_log: 22
+  loaded_pow_len_log: 22
+sf:
+  scale_factor_log: 3
+  cq_range_log: 20
+  cq_range_lower_log: 19
+prover:
+  model_path: models
+  setup_path: setups
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs
+  acc_proof_path: acc_proofs
+  final_proof_path: final_proofs
+  enable_layer_setup: true
+verifier:
+  enc_model_path: modelsEnc
+  enc_input_path: inputsEnc
+  enc_output_path: outputsEnc
+  proof_path: proofs
