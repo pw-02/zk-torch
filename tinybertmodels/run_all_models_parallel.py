@@ -17,8 +17,10 @@ cleanup_files = [
     "outputsEnc",
     "acc_proofs"
 ]
-
-log_dir = f"logs/{str(num_parallel)}_parallel"
+if mock_prove:
+    log_dir = f"logs/{str(num_parallel)}_parallel_mock"
+else:
+    log_dir = f"logs/{str(num_parallel)}_parallel"
 
 #delete old logs
 if os.path.exists(log_dir):
