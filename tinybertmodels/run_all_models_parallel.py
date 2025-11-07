@@ -6,7 +6,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # ==== CONFIGURATION ====
 yaml_dir = "tinybertmodels/splits"
-num_parallel = 1  # number of processes to run concurrently
+num_parallel = 10  # number of processes to run concurrently
 
 cleanup_files = [
     "layer_setup",
