@@ -19,6 +19,12 @@ cleanup_files = [
 ]
 
 log_dir = "logs"
+
+#delete old logs
+if os.path.exists(log_dir):
+    for f in os.listdir(log_dir):
+        os.remove(os.path.join(log_dir, f))
+
 os.makedirs(log_dir, exist_ok=True)
 
 # ==== FUNCTIONS ====
