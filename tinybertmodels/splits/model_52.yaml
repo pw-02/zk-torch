@@ -1,6 +1,6 @@
 task: model_52
 onnx:
-  model_path: buildmodels/bert/model_52.onnx
+  model_path: tinybertmodels/splits/model_52.onnx
   input_path: ''
 ptau:
   ptau_path: challenge_0003
