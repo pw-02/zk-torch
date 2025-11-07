@@ -1,5 +1,7 @@
 import os
 import subprocess
+import time
+import psutil
 
 # Path to your YAML files
 yaml_dir = "tinybertmodels/splits"
@@ -15,8 +17,14 @@ cleanup_files = [
     "acc_proofs"
 ]
 
-# Optional: log output to a file
+# Output log files
 log_file = "run_log.txt"
+stats_file = "process_stats.txt"
+
+# Start timing and memory tracking
+start_time = time.time()
+process = psutil.Process(os.getpid())
+max_memory = 0
 
 with open(log_file, "w") as log:
     for file in os.listdir(yaml_dir):
@@ -33,16 +41,21 @@ with open(log_file, "w") as log:
             # Run the command
             result = subprocess.run(cmd, capture_output=True, text=True)
 
-            # Log both stdout and stderr
+            # Log stdout and stderr
             log.write(result.stdout)
             log.write(result.stderr)
+
+            # Update max memory usage
+            mem = process.memory_info().rss / (1024 ** 2)
+            if mem > max_memory:
+                max_memory = mem
 
             if result.returncode == 0:
                 print(f"✅ {file} completed successfully\n")
             else:
                 print(f"❌ {file} failed (check log)\n")
 
-            # --- Cleanup step ---
+            # Cleanup step
             print("🧹 Cleaning up generated files...")
             for f in cleanup_files:
                 if os.path.exists(f):
@@ -53,4 +66,16 @@ with open(log_file, "w") as log:
                         print(f"  ⚠️ Could not remove {f}: {e}")
             print("Cleanup complete.\n")
 
-print("🎯 All YAML files processed. See run_log.txt for details.")
+# End timing
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+# Write summary stats
+with open(stats_file, "w") as stats:
+    stats.write(f"Total elapsed time: {elapsed_time:.2f} seconds\n")
+    stats.write(f"Peak memory usage: {max_memory:.2f} MB\n")
+
+print("🎯 All YAML files processed.")
+print(f"🕒 Total elapsed time: {elapsed_time:.2f} seconds")
+print(f"💾 Peak memory usage: {max_memory:.2f} MB")
+print(f"📄 See {log_file} and {stats_file} for details.")
