@@ -6,8 +6,8 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # ==== CONFIGURATION ====
 yaml_dir = "tinybertmodels/splits"
-num_parallel = 10  # number of processes to run concurrently
-
+num_parallel = 1  # number of processes to run concurrently
+mock_prove = True  # whether to use mock proving
 cleanup_files = [
     "layer_setup",
     "models",
@@ -32,10 +32,16 @@ def run_model(yaml_file):
     """Run one model and return timing + success info."""
     start_time = time.time()
     yaml_path = os.path.join(yaml_dir, yaml_file)
-    cmd = [
-        "cargo", "run", "--release", "--bin", "zk_torch",
-        "--features", "mock_prove,fold", "--", yaml_path
-    ]
+    if mock_prove:
+        cmd = [
+            "cargo", "run", "--release", "--bin", "zk_torch",
+            "--features", "mock_prove,fold", "--", yaml_path
+        ]
+    else:
+        cmd = [
+            "cargo", "run", "--release", "--bin", "zk_torch",
+            "--features", "fold", "--", yaml_path
+        ]
     log_path = os.path.join(log_dir, f"{os.path.splitext(yaml_file)[0]}.log")
 
     with open(log_path, "w") as log:
@@ -95,7 +101,8 @@ if __name__ == "__main__":
     with open(summary_path, "w") as summary:
         summary.write(f"Total elapsed time: {total_elapsed:.2f} seconds\n")
         summary.write(f"Peak memory usage: {max_memory:.2f} MB\n")
-        summary.write(f"Parallel processes: {num_parallel}\n\n")
+        summary.write(f"Parallel processes: {num_parallel}\n")
+        summary.write(f"Mock proving: {mock_prove}\n\n")
         summary.write("Per-model results:\n")
         for yaml_file, success, elapsed in results:
             status = "OK" if success else "FAILED"
