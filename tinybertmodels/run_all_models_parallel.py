@@ -2,12 +2,19 @@ import os
 import subprocess
 import time
 import psutil
+import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-# ==== CONFIGURATION ====
+# ==== ARGUMENT PARSING ====
+parser = argparse.ArgumentParser(description="Run zk_torch models in parallel.")
+parser.add_argument("--num_parallel", type=int, default=1, help="Number of parallel processes.")
+parser.add_argument("--mock_prove", action="store_true", help="Use mock proving mode.")
+args = parser.parse_args()
+
 yaml_dir = "tinybertmodels/splits"
-num_parallel = 1  # number of processes to run concurrently
-mock_prove = True  # whether to use mock proving
+num_parallel = args.num_parallel
+mock_prove = args.mock_prove
+
 cleanup_files = [
     "layer_setup",
     "models",
