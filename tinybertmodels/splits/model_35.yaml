@@ -11,17 +11,17 @@ sf:
   cq_range_log: 20
   cq_range_lower_log: 19
 prover:
-  model_path: run_log.txt
-  setup_path: setups
-  enc_model_path: modelsEnc
-  enc_input_path: inputsEnc
-  enc_output_path: outputsEnc
-  proof_path: proofs
-  acc_proof_path: acc_proofs
-  final_proof_path: final_proofs
+  model_path: model_35_models
+  setup_path: model_35_setups
+  enc_model_path: model_35_modelsEnc
+  enc_input_path: model_35_inputsEnc
+  enc_output_path: model_35_outputsEnc
+  proof_path: model_35_proofs
+  acc_proof_path: model_35_acc_proofs
+  final_proof_path: model_35_final_proofs
   enable_layer_setup: true
 verifier:
-  enc_model_path: modelsEnc
-  enc_input_path: inputsEnc
-  enc_output_path: outputsEnc
-  proof_path: proofs
+  enc_model_path: model_35_modelsEnc
+  enc_input_path: model_35_inputsEnc
+  enc_output_path: model_35_outputsEnc
+  proof_path: model_35_proofs
