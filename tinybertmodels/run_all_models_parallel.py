@@ -18,7 +18,7 @@ cleanup_files = [
     "acc_proofs"
 ]
 
-log_dir = "logs"
+log_dir = f"logs/{str(num_parallel)}_parallel"
 
 #delete old logs
 if os.path.exists(log_dir):
