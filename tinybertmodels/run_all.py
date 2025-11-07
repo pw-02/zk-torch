@@ -1,12 +1,11 @@
 import os
 import subprocess
-import shutil
 
 # Path to your YAML files
 yaml_dir = "tinybertmodels/splits"
 
-# Folders to remove after each run
-cleanup_dirs = [
+# Files to remove after each run
+cleanup_files = [
     "layer_setup",
     "models",
     "setups",
@@ -44,14 +43,14 @@ with open(log_file, "w") as log:
                 print(f"❌ {file} failed (check log)\n")
 
             # --- Cleanup step ---
-            print("🧹 Cleaning up directories...")
-            for d in cleanup_dirs:
-                if os.path.exists(d):
+            print("🧹 Cleaning up generated files...")
+            for f in cleanup_files:
+                if os.path.exists(f):
                     try:
-                        shutil.rmtree(d)
-                        print(f"  - Removed {d}")
+                        os.remove(f)
+                        print(f"  - Removed file: {f}")
                     except Exception as e:
-                        print(f"  ⚠️ Could not remove {d}: {e}")
+                        print(f"  ⚠️ Could not remove {f}: {e}")
             print("Cleanup complete.\n")
 
 print("🎯 All YAML files processed. See run_log.txt for details.")
