@@ -88,7 +88,8 @@ if __name__ == "__main__":
     summary_path = os.path.join(log_dir, "summary.txt")
     with open(summary_path, "w") as summary:
         summary.write(f"Total elapsed time: {total_elapsed:.2f} seconds\n")
-        summary.write(f"Peak memory usage: {max_memory:.2f} MB\n\n")
+        summary.write(f"Peak memory usage: {max_memory:.2f} MB\n")
+        summary.write(f"Parallel processes: {num_parallel}\n\n")
         summary.write("Per-model results:\n")
         for yaml_file, success, elapsed in results:
             status = "OK" if success else "FAILED"
