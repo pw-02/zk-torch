@@ -1,0 +1,34 @@
+onnx.utils.extract_model:è
+ä
+?/model/bert/encoder/layer.0/attention/output/dense/Add_output_0
+//model/bert/embeddings/LayerNorm/Add_1_output_09/model/bert/encoder/layer.0/attention/output/Add_output_00/model/bert/encoder/layer.0/attention/output/Add"AddExtracted from {main_graph}ZF
+//model/bert/embeddings/LayerNorm/Add_1_output_0
+
+
+ 
+€ZV
+?/model/bert/encoder/layer.0/attention/output/dense/Add_output_0
+
+
+ 
+€bP
+9/model/bert/encoder/layer.0/attention/output/Add_output_0
+
+
+ 
+€jF
+//model/bert/embeddings/LayerNorm/Add_1_output_0
+
+
+ 
+€jV
+?/model/bert/encoder/layer.0/attention/output/dense/Add_output_0
+
+
+ 
+€jP
+9/model/bert/encoder/layer.0/attention/output/Add_output_0
+
+
+ 
+€B

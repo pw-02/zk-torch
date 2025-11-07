@@ -1,0 +1,23 @@
+onnx.utils.extract_model:…
+Ý
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Div_output_0I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Erf_output_0@/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Erf"ErfExtracted from {main_graph}Z`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Div_output_0
+
+
+ 
+€b`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Erf_output_0
+
+
+ 
+€j`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Div_output_0
+
+
+ 
+€j`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Erf_output_0
+
+
+ 
+€B

@@ -1,0 +1,28 @@
+onnx.utils.extract_model:´
+À
+7/model/bert/encoder/layer.1/attention/self/Add_output_0;/model/bert/encoder/layer.1/attention/self/Softmax_output_02/model/bert/encoder/layer.1/attention/self/Softmax"Softmax*
+axis Extracted from {main_graph}ZQ
+7/model/bert/encoder/layer.1/attention/self/Add_output_0
+
+
+
+ 
+ bU
+;/model/bert/encoder/layer.1/attention/self/Softmax_output_0
+
+
+
+ 
+ jQ
+7/model/bert/encoder/layer.1/attention/self/Add_output_0
+
+
+
+ 
+ jU
+;/model/bert/encoder/layer.1/attention/self/Softmax_output_0
+
+
+
+ 
+ B

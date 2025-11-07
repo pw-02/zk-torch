@@ -1,0 +1,26 @@
+onnx.utils.extract_model:í
+”
+;/model/bert/encoder/layer.1/output/LayerNorm/Add_1_output_0
+onnx::MatMul_332!/model/qa_outputs/MatMul_output_0/model/qa_outputs/MatMul"MatMulExtracted from {main_graph}*œ€Bonnx::MatMul_332J€É'<¥Þ×<%Ê<X™Ñ:åg¼<2=­V<èL½]’Z<+‚¥¼g"¼Z¢=µ•ë¼Äï»ÆþJ¼Ž%<UŸ¼µIQ<Û–u»’/ »îÖ<C-=ô©Z»Mÿ=;¦%/½R´±¼w{4½fØ="(ºD³<Î@½.#°<ôu¬¼Å°7»[,;°;*ì·¼d,£¼@’«<‚H8<Vm	»Yûi<§¼¸×š<nW½7{½Ý¼^°H¼÷T±<ÅŽª<D¡…<ïRQ<¢L•<£w–<Ýš»ø$.<$fL¼{4<õ·Ç¼më±<ê»à<½\XD½N^G<M•”<â¥„;+;<Œgþ¼–¶*¼0e=CÀv¼@O»N­n<„f<¿ä„ºiíí<Šî<â€&<x‰½>mÕ<æ®;(J…»>¢<!ç<5ûb<>Oæ¼Tg„<ìv;Ý]ê;~"<"(Æ:ž¶;ÐÑ|»É€<¹Žw¼4ù=>“º;ÒP¸¼ô¤¼ÉJî<D°¼,2ˆ¼R³Y»Éš<0G<t}‘¼xy<END<ƒÿw»^¿»'ÃŽ;°û¼ÜcÉ»úL¼×ù—<êÉ;<rk»]î
+½Ä);Æ1í¼ÜZ½D‚Â<Ý•';A{<¯2U<ú¥<oñˆ:·½'À²<¾¼‚š¼”(9¼E4†;v‹›<v€=ÇyS;•8€¼`çÑ¼ 5Œ<Òô—<gê¡<3^c<´ç”<²w<“¼_€;o˜ü;n†¼[pæ¼<o§Ò¼"éA=7ÿø9Ä$<¼‡(²;Á	»I˜¼ N¼€Ðµ<,T^¼‚ó’<%;†Õ=9h=5Õí¼üòÊ»ôÞ)½«x¼G‘oºœý0¼¾ß]¼MÕÀ:6—<z{=|£Y¼K9C¼pêÁ¼„½Y¼ÇÁÐ<jNg<P»œ<E§^<»ó6¼Éìœ¼Áó ;ê­×º-EŒ¼•Î;=`];m<¤’/»oV™<B1®»É½â|<´s.;÷”¼…€w<£w½=i¡»Þ“<´j«»+¥×;(F<6œ<öÌ¼£ê¼x-,<&”j¼û¼~><t³W;H„<Åµ+<U{Ë<ä§¤<Å(g;–7+=>—¼û¼e¥w<¶å¼fÚG<ìsR¼ŒŠ¼´’R½!B<›B¼·Ñ„¼Û«¼‚Î×»îÚß;òÓu»^8<’Å,<ž›+<—i
+»Ê Ë¼x¤<–ãš¼÷î¸<.Çm½SÝ»´Õ1<ö*»c ¼`•<³ë¾»@i½ÉÍ®<E)£º•ð»¼›Ï:ƒ¶ô<÷Ò¼[­;ZR
+;/model/bert/encoder/layer.1/output/LayerNorm/Add_1_output_0
+
+
+ 
+€b7
+!/model/qa_outputs/MatMul_output_0
+
+
+ 
+jR
+;/model/bert/encoder/layer.1/output/LayerNorm/Add_1_output_0
+
+
+ 
+€j7
+!/model/qa_outputs/MatMul_output_0
+
+
+ 
+B

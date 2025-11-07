@@ -1,0 +1,40 @@
+onnx.utils.extract_model:­
+ù
+;/model/bert/encoder/layer.0/attention/self/Softmax_output_0
+?/model/bert/encoder/layer.0/attention/self/Transpose_1_output_0</model/bert/encoder/layer.0/attention/self/MatMul_1_output_03/model/bert/encoder/layer.0/attention/self/MatMul_1"MatMulExtracted from {main_graph}ZU
+;/model/bert/encoder/layer.0/attention/self/Softmax_output_0
+
+
+
+ 
+ ZY
+?/model/bert/encoder/layer.0/attention/self/Transpose_1_output_0
+
+
+
+ 
+@bV
+</model/bert/encoder/layer.0/attention/self/MatMul_1_output_0
+
+
+
+ 
+@jY
+?/model/bert/encoder/layer.0/attention/self/Transpose_1_output_0
+
+
+
+ 
+@jU
+;/model/bert/encoder/layer.0/attention/self/Softmax_output_0
+
+
+
+ 
+ jV
+</model/bert/encoder/layer.0/attention/self/MatMul_1_output_0
+
+
+
+ 
+@B

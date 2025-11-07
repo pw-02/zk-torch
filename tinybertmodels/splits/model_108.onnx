@@ -1,0 +1,34 @@
+onnx.utils.extract_model:é
+å
+//model/bert/encoder/layer.1/output/Add_output_0
+@/model/bert/encoder/layer.1/output/LayerNorm/ReduceMean_output_09/model/bert/encoder/layer.1/output/LayerNorm/Sub_output_00/model/bert/encoder/layer.1/output/LayerNorm/Sub"SubExtracted from {main_graph}ZV
+@/model/bert/encoder/layer.1/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+ZF
+//model/bert/encoder/layer.1/output/Add_output_0
+
+
+ 
+€bP
+9/model/bert/encoder/layer.1/output/LayerNorm/Sub_output_0
+
+
+ 
+€jF
+//model/bert/encoder/layer.1/output/Add_output_0
+
+
+ 
+€jV
+@/model/bert/encoder/layer.1/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+jP
+9/model/bert/encoder/layer.1/output/LayerNorm/Sub_output_0
+
+
+ 
+€B

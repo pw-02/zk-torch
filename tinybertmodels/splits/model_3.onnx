@@ -1,0 +1,34 @@
+onnx.utils.extract_model:œ
+¼
+6/model/bert/embeddings/word_embeddings/Gather_output_0
+</model/bert/embeddings/token_type_embeddings/Gather_output_0#/model/bert/embeddings/Add_output_0/model/bert/embeddings/Add"AddExtracted from {main_graph}ZM
+6/model/bert/embeddings/word_embeddings/Gather_output_0
+
+
+ 
+€ZS
+</model/bert/embeddings/token_type_embeddings/Gather_output_0
+
+
+ 
+€b:
+#/model/bert/embeddings/Add_output_0
+
+
+ 
+€jM
+6/model/bert/embeddings/word_embeddings/Gather_output_0
+
+
+ 
+€jS
+</model/bert/embeddings/token_type_embeddings/Gather_output_0
+
+
+ 
+€j:
+#/model/bert/embeddings/Add_output_0
+
+
+ 
+€B

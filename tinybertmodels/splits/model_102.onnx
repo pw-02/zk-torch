@@ -1,0 +1,34 @@
+onnx.utils.extract_model:ê
+š
+;/model/bert/encoder/layer.1/intermediate/dense/Add_output_0
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Add_output_0I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Mul_output_0@/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Mul"MulExtracted from {main_graph}ZR
+;/model/bert/encoder/layer.1/intermediate/dense/Add_output_0
+
+
+ 
+€Z`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Add_output_0
+
+
+ 
+€b`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Mul_output_0
+
+
+ 
+€jR
+;/model/bert/encoder/layer.1/intermediate/dense/Add_output_0
+
+
+ 
+€j`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Add_output_0
+
+
+ 
+€j`
+I/model/bert/encoder/layer.1/intermediate/intermediate_act_fn/Mul_output_0
+
+
+ 
+€B

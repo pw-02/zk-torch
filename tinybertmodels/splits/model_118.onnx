@@ -1,0 +1,35 @@
+onnx.utils.extract_model:É
+‰
+/model/qa_outputs/Add_output_0/model/Split_output_0/model/Split_output_1/model/Split"Split*
+axisÿÿÿÿÿÿÿÿÿ *
+split@@ Extracted from {main_graph}Z4
+/model/qa_outputs/Add_output_0
+
+
+ 
+b+
+/model/Split_output_0
+
+
+ 
+b+
+/model/Split_output_1
+
+
+ 
+j4
+/model/qa_outputs/Add_output_0
+
+
+ 
+j+
+/model/Split_output_0
+
+
+ 
+j+
+/model/Split_output_1
+
+
+ 
+B

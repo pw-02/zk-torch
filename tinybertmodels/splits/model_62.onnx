@@ -1,0 +1,23 @@
+onnx.utils.extract_model:–
+°
+9/model/bert/encoder/layer.0/output/LayerNorm/Add_output_0:/model/bert/encoder/layer.0/output/LayerNorm/Sqrt_output_01/model/bert/encoder/layer.0/output/LayerNorm/Sqrt"SqrtExtracted from {main_graph}ZO
+9/model/bert/encoder/layer.0/output/LayerNorm/Add_output_0
+
+
+ 
+bP
+:/model/bert/encoder/layer.0/output/LayerNorm/Sqrt_output_0
+
+
+ 
+jO
+9/model/bert/encoder/layer.0/output/LayerNorm/Add_output_0
+
+
+ 
+jP
+:/model/bert/encoder/layer.0/output/LayerNorm/Sqrt_output_0
+
+
+ 
+B

@@ -1,0 +1,23 @@
+onnx.utils.extract_model:Â
+Œ
+-/model/bert/embeddings/LayerNorm/Add_output_0./model/bert/embeddings/LayerNorm/Sqrt_output_0%/model/bert/embeddings/LayerNorm/Sqrt"SqrtExtracted from {main_graph}ZC
+-/model/bert/embeddings/LayerNorm/Add_output_0
+
+
+ 
+bD
+./model/bert/embeddings/LayerNorm/Sqrt_output_0
+
+
+ 
+jC
+-/model/bert/embeddings/LayerNorm/Add_output_0
+
+
+ 
+jD
+./model/bert/embeddings/LayerNorm/Sqrt_output_0
+
+
+ 
+B

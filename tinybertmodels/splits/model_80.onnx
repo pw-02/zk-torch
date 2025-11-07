@@ -1,0 +1,40 @@
+onnx.utils.extract_model:•
+Á
+7/model/bert/encoder/layer.1/attention/self/Div_output_0
+/model/bert/Mul_output_07/model/bert/encoder/layer.1/attention/self/Add_output_0./model/bert/encoder/layer.1/attention/self/Add"AddExtracted from {main_graph}Z2
+/model/bert/Mul_output_0
+
+
+
+
+ ZQ
+7/model/bert/encoder/layer.1/attention/self/Div_output_0
+
+
+
+ 
+ bQ
+7/model/bert/encoder/layer.1/attention/self/Add_output_0
+
+
+
+ 
+ j2
+/model/bert/Mul_output_0
+
+
+
+
+ jQ
+7/model/bert/encoder/layer.1/attention/self/Div_output_0
+
+
+
+ 
+ jQ
+7/model/bert/encoder/layer.1/attention/self/Add_output_0
+
+
+
+ 
+ B

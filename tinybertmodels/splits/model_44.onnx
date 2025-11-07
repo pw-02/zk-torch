@@ -1,0 +1,34 @@
+onnx.utils.extract_model:Ù
+‘
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0
+D/model/bert/encoder/layer.0/attention/output/LayerNorm/Sqrt_output_0C/model/bert/encoder/layer.0/attention/output/LayerNorm/Div_output_0:/model/bert/encoder/layer.0/attention/output/LayerNorm/Div"DivExtracted from {main_graph}ZZ
+D/model/bert/encoder/layer.0/attention/output/LayerNorm/Sqrt_output_0
+
+
+ 
+ZZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0
+
+
+ 
+€bZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Div_output_0
+
+
+ 
+€jZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0
+
+
+ 
+€jZ
+D/model/bert/encoder/layer.0/attention/output/LayerNorm/Sqrt_output_0
+
+
+ 
+jZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Div_output_0
+
+
+ 
+€B

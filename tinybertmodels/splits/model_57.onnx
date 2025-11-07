@@ -1,0 +1,25 @@
+onnx.utils.extract_model:®
+Î
+//model/bert/encoder/layer.0/output/Add_output_0@/model/bert/encoder/layer.0/output/LayerNorm/ReduceMean_output_07/model/bert/encoder/layer.0/output/LayerNorm/ReduceMean"
+ReduceMean*
+axes@ÿÿÿÿÿÿÿÿÿ Extracted from {main_graph}ZF
+//model/bert/encoder/layer.0/output/Add_output_0
+
+
+ 
+€bV
+@/model/bert/encoder/layer.0/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+jF
+//model/bert/encoder/layer.0/output/Add_output_0
+
+
+ 
+€jV
+@/model/bert/encoder/layer.0/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+B

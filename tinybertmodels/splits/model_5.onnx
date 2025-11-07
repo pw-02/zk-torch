@@ -1,0 +1,25 @@
+onnx.utils.extract_model:à
+¬
+%/model/bert/embeddings/Add_1_output_04/model/bert/embeddings/LayerNorm/ReduceMean_output_0+/model/bert/embeddings/LayerNorm/ReduceMean"
+ReduceMean*
+axes@ÿÿÿÿÿÿÿÿÿ Extracted from {main_graph}Z<
+%/model/bert/embeddings/Add_1_output_0
+
+
+ 
+€bJ
+4/model/bert/embeddings/LayerNorm/ReduceMean_output_0
+
+
+ 
+j<
+%/model/bert/embeddings/Add_1_output_0
+
+
+ 
+€jJ
+4/model/bert/embeddings/LayerNorm/ReduceMean_output_0
+
+
+ 
+B

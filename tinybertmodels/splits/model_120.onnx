@@ -1,0 +1,20 @@
+onnx.utils.extract_model:â
+K
+/model/Split_output_1
+end_logits/model/Squeeze_1"Squeeze*
+axes@ Extracted from {main_graph}Z+
+/model/Split_output_1
+
+
+ 
+b
+
+end_logits
+
+
+ j+
+/model/Split_output_1
+
+
+ 
+B

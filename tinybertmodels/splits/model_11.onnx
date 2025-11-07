@@ -1,0 +1,34 @@
+onnx.utils.extract_model:ý
+¹
+-/model/bert/embeddings/LayerNorm/Sub_output_0
+./model/bert/embeddings/LayerNorm/Sqrt_output_0-/model/bert/embeddings/LayerNorm/Div_output_0$/model/bert/embeddings/LayerNorm/Div"DivExtracted from {main_graph}ZD
+./model/bert/embeddings/LayerNorm/Sqrt_output_0
+
+
+ 
+ZD
+-/model/bert/embeddings/LayerNorm/Sub_output_0
+
+
+ 
+€bD
+-/model/bert/embeddings/LayerNorm/Div_output_0
+
+
+ 
+€jD
+-/model/bert/embeddings/LayerNorm/Sub_output_0
+
+
+ 
+€jD
+./model/bert/embeddings/LayerNorm/Sqrt_output_0
+
+
+ 
+jD
+-/model/bert/embeddings/LayerNorm/Div_output_0
+
+
+ 
+€B

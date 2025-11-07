@@ -1,0 +1,34 @@
+onnx.utils.extract_model:Õ
+ç
+9/model/bert/encoder/layer.0/attention/output/Add_output_0
+J/model/bert/encoder/layer.0/attention/output/LayerNorm/ReduceMean_output_0C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0:/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub"SubExtracted from {main_graph}Z`
+J/model/bert/encoder/layer.0/attention/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+ZP
+9/model/bert/encoder/layer.0/attention/output/Add_output_0
+
+
+ 
+ÄbZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0
+
+
+ 
+ÄjP
+9/model/bert/encoder/layer.0/attention/output/Add_output_0
+
+
+ 
+Äj`
+J/model/bert/encoder/layer.0/attention/output/LayerNorm/ReduceMean_output_0
+
+
+ 
+jZ
+C/model/bert/encoder/layer.0/attention/output/LayerNorm/Sub_output_0
+
+
+ 
+ÄB
