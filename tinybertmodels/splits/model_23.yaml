@@ -1,6 +1,6 @@
 task: model_23
 onnx:
-  model_path: buildmodels\bert\model_23.onnx
+  model_path: buildmodels/bert/model_23.onnx
   input_path: ''
 ptau:
   ptau_path: challenge_0003

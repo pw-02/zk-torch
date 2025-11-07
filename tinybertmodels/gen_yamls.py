@@ -17,7 +17,7 @@ for file in os.listdir(models_dir):
         yaml_content = {
             "task": model_name,
             "onnx": {
-                "model_path": os.path.join("buildmodels", "bert", file),
+                "model_path": f"buildmodels/bert/{file}",
                 # model_path: bert_fixed.onnx --- IGNORE ---
                 "input_path": ""
             },
